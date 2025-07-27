@@ -14,6 +14,12 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    rollupOptions: {
+      external: []
+    }
+  },
+  optimizeDeps: {
+    exclude: ['vue-demi']
   }
 })
