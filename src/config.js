@@ -7,8 +7,8 @@ const config = {
   },
   // Production
   production: {
-    backendUrl: process.env.VITE_BACKEND_URL || 'https://your-backend-app.railway.app',
-    apiUrl: process.env.VITE_BACKEND_URL || 'https://your-backend-app.railway.app/api'
+    backendUrl: import.meta.env.VITE_BACKEND_URL || 'https://backend-itcom-production.up.railway.app',
+    apiUrl: import.meta.env.VITE_BACKEND_URL || 'https://backend-itcom-production.up.railway.app/api'
   }
 };
 

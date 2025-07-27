@@ -107,7 +107,9 @@ export default {
         lineQrcodeText: '', // เพิ่มตัวแปรสำหรับข้อความใต้ QR
       },
       currentImageIndex: 0,
-      backendUrl: 'http://localhost:5000',
+      backendUrl: import.meta.env.MODE === 'production' 
+        ? 'https://backend-itcom-production.up.railway.app'
+        : 'http://localhost:5000',
       isAdmin: false, // เพิ่มตัวแปรสำหรับตรวจสอบสิทธิ์
       loginPassword: '', // เพิ่มตัวแปรสำหรับรหัสผ่าน
       loginError: false, // เพิ่มตัวแปรสำหรับแสดงข้อความผิดพลาด

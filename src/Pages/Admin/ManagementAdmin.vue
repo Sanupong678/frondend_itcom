@@ -192,6 +192,7 @@
 import axios from 'axios';
 import Navbar from '../../components/Navbar.vue';
 import ProductCard from '../../components/ProductCard.vue';
+import { apiUrl } from '../../config.js';
 
 export default {
   components: {
@@ -237,7 +238,7 @@ export default {
     async fetchCategories() {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/categories', {
+        const response = await axios.get(`${apiUrl}/categories`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         this.categories = response.data;
@@ -256,8 +257,8 @@ export default {
       try {
         const token = localStorage.getItem('token');
         const url = this.selectedCategory 
-          ? `http://localhost:5000/api/products/by-category?category=${this.selectedCategory}`
-          : 'http://localhost:5000/api/products';
+          ? `${apiUrl}/products/by-category?category=${this.selectedCategory}`
+          : `${apiUrl}/products`;
         const response = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -276,7 +277,7 @@ export default {
     },
     getImageUrl(imagePath) {
       if (!imagePath) return '/placeholder-image.jpg';
-      return `http://localhost:5000${imagePath}`;
+              return `${apiUrl.replace('/api', '')}${imagePath}`;
     },
     handleImageError(event) {
       event.target.src = '/placeholder-image.jpg';
@@ -461,7 +462,7 @@ export default {
         const token = localStorage.getItem('token');
         if (this.editingProduct) {
           // Update existing product
-          await axios.put(`http://localhost:5000/api/products/${this.editingProduct._id}`, formData, {
+          await axios.put(`${apiUrl}/products/${this.editingProduct._id}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${token}`
@@ -470,7 +471,7 @@ export default {
           alert('อัปเดตสินค้าสำเร็จ!');
         } else {
           // Create new product
-          await axios.post('http://localhost:5000/api/products', formData, {
+          await axios.post(`${apiUrl}/products`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${token}`
@@ -499,7 +500,7 @@ export default {
       
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/products/${productId}`, {
+        await axios.delete(`${apiUrl}/products/${productId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert('ลบสินค้าสำเร็จ!');
@@ -518,7 +519,7 @@ export default {
     async updateProductStatus(productId, status) {
       try {
         const token = localStorage.getItem('token');
-        await axios.patch(`http://localhost:5000/api/products/${productId}/status`, 
+        await axios.patch(`${apiUrl}/products/${productId}/status`, 
           { status },
           { headers: { Authorization: `Bearer ${token}` } }
         );

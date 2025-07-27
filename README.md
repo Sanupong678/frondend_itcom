@@ -1,5 +1,41 @@
-# Vue 3 + Vite
+# Category Shop Frontend
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Frontend application สำหรับ Category Shop
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Environment Variables
+
+สร้างไฟล์ `.env` ในโฟลเดอร์ frontend:
+
+```env
+VITE_BACKEND_URL=https://backend-itcom-production.up.railway.app
+```
+
+## Scripts
+
+```bash
+# Development
+npm run dev
+
+# Build
+npm run build
+
+# Preview (Production)
+npm run preview
+```
+
+## Railway Deployment
+
+1. สร้าง Railway project
+2. เชื่อมต่อกับ GitHub repository
+3. ตั้งค่า environment variable:
+   - `VITE_BACKEND_URL=https://backend-itcom-production.up.railway.app`
+4. Deploy อัตโนมัติ
+
+## Features
+
+- ✅ Product management
+- ✅ Category management
+- ✅ Admin authentication
+- ✅ Image upload
+- ✅ Product status management
+- ✅ Responsive design
